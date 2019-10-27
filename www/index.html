@@ -115,17 +115,17 @@
 		 function f1(){
 		     var ch = document.getElementById("chk1");
 			 if (ch.checked){ws.send("11");}else {ws.send("10");}
-			 navigator.vibrate(1000);
+			 navigator.vibrate(100);
 		 }
 		 function f2(){
 		     var ch = document.getElementById("chk2");
 			 if (ch.checked){ws.send("21");}else {ws.send("20");}
-			 navigator.vibrate(1000);			 
+			 navigator.vibrate(100);			 
 		 }
 		 		 function f3(){
 		     var ch = document.getElementById("chk3");
 			 if (ch.checked){ws.send("31");}else {ws.send("30");}	    
-			  navigator.vibrate(1000);
+			  navigator.vibrate(100);
 		 }
 		 
 		 function acao(){
@@ -187,7 +187,7 @@
 		</br></br>
 		<button onclick="acao();" class="purple small">Clique aqui 1</button>
 		
-		<button onclick="acao1();" class="purple small">Clique aqui 2</button>
+		<button onclick="navigator.notification.alert('oi');" class="purple small">Clique aqui 2</button>
 		<div id="result"></div>
 	  
 		<div class="footer purple-900">
