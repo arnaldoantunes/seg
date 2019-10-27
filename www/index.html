@@ -99,7 +99,7 @@
 					document.getElementById("chk1").disabled = true;
 					document.getElementById("chk2").disabled = true;
 					document.getElementById("chk3").disabled = true;
-					document.getElementById("status").innerHTML = "Disconectado";
+					document.getElementById("status").innerHTML = "Desconectado";
 				};
 			}
 	 
@@ -136,7 +136,9 @@
 			 }
 			 
 		
-			
+			function atualiza(){
+			   OpenWebsocket();
+			}
 	 
 		
 			
@@ -186,6 +188,9 @@
 		<div class="footer blue-900">
 			<div class="title">
 				<div id="status"></div>
+			</div>
+			<div class="right">
+			    <button onclick="atualiza();" class="icon ion-refresh"></button>
 			</div>
 		</div>	
     </body>
