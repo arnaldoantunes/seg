@@ -87,7 +87,7 @@
 				document.getElementById("chk2").disabled = true;
 				document.getElementById("chk3").disabled = true;
 				document.getElementById("status").innerHTML = "Desconectado";
-				ws = new WebSocket('ws://192.168.1.105/test');
+				ws = new WebSocket('ws://192.168.1.199/test');
 				ws.onopen = function() {
 					 ws.send("A0");
 					document.getElementById("chk1").disabled = false;
@@ -112,20 +112,17 @@
 				//ws.send(textToSend);
 			}
 			 
-			  
-
-			 
-			 function f1(){
+			function f1(){
 				 var ch = document.getElementById("chk1");
 				 if (ch.checked){ws.send("11");}else {ws.send("10");}
 				 //navigator.vibrate(100);
-			 }
-			 function f2(){
+			}
+			function f2(){
 				 var ch = document.getElementById("chk2");
 				 if (ch.checked){ws.send("21");}else {ws.send("20");}
 				 //navigator.vibrate(100);			 
-			 }
-					 function f3(){
+			}
+			function f3(){
 				 var ch = document.getElementById("chk3");
 				 if (ch.checked){ws.send("31");}else {ws.send("30");}	    
 				  //navigator.vibrate(100);
@@ -134,16 +131,10 @@
 			 function acao(){
 				alert("Curioso","Atenção");
 			 }
-			 
 		
 			function atualiza(){
 			   OpenWebsocket();
 			}
-	 
-		
-			
-			
-			
 	 
 		  </script>
 	  
