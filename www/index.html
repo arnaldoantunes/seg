@@ -10,6 +10,10 @@
 		<link rel="stylesheet" type="text/css" href="mobileui/style.css">
         <title>MobileUI</title>
 		<audio id="myAudio"><source src="sirene.mp3" type="audio/mpeg"></audio>
+		<script type="text/javascript" src="js/cordova.js"></script>
+        <script type="text/javascript" src="mobileui/mobileui.js"></script>
+		<script type="text/javascript" src="js/index.js"></script>
+		
 		<style>
 		.switch {
 		  position: relative;
@@ -133,13 +137,13 @@
 		 }
 		 
 		 function vibrate() {
-			navigator.notification.vibrate(2000);
+			navigator.vibrate(1000);
 			}
 		 
 		
  
 		function showAlert() {
-			navigator.notification.alert('Olá');
+			navigator.notification.alert('Olá Bagua', vibrate, 'Atenção', 'Ok');
 		}
  
       </script>
@@ -200,8 +204,6 @@
 	  
 	  
 	
-		<script type="text/javascript" src="js/cordova.js"></script>
-        <script type="text/javascript" src="mobileui/mobileui.js"></script>
-		<script type="text/javascript" src="js/index.js"></script>
+
     </body>
 </html>
