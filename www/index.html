@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    
+        <meta name="format-detection" content="telephone=no">
+        <meta charset="utf-8">
+        <meta name="msapplication-tap-highlight" content="no">
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+        <link rel="stylesheet" type="text/css" href="css/index.css">
+		<link rel="stylesheet" type="text/css" href="mobileui/style.css">
+        <title>MobileUI</title>
+		<audio id="myAudio"><source src="sirene.mp3" type="audio/mpeg"></audio>
+		<style>
+		.switch {
+		  position: relative;
+		  display: inline-block;
+		  width: 60px;
+		  height: 34px;
+		}
+
+		.switch input { 
+		  opacity: 0;
+		  width: 0;
+		  height: 0;
+		}
+
+		.slider {
+		  position: absolute;
+		  cursor: pointer;
+		  top: 0;
+		  left: 0;
+		  right: 0;
+		  bottom: 0;
+		  background-color: #ccc;
+		  -webkit-transition: .4s;
+		  transition: .4s;
+		}
+
+		.slider:before {
+		  position: absolute;
+		  content: "";
+		  height: 26px;
+		  width: 26px;
+		  left: 4px;
+		  bottom: 4px;
+		  background-color: white;
+		  -webkit-transition: .4s;
+		  transition: .4s;
+		}
+
+		input:checked + .slider {
+		  background-color: #2196F3;
+		}
+
+		input:focus + .slider {
+		  box-shadow: 0 0 1px #2196F3;
+		}
+
+		input:checked + .slider:before {
+		  -webkit-transform: translateX(26px);
+		  -ms-transform: translateX(26px);
+		  transform: translateX(26px);
+		}
+
+		/* Rounded sliders */
+		.slider.round {
+		  border-radius: 34px;
+		}
+
+		.slider.round:before {
+		  border-radius: 50%;
+		}
+	</style>
+		
+		<script type = "text/javascript">
+		 var som = document.getElementById("myAudio");
+		 som.currentTime = 1;
+         var ws = null;
+ 
+        function OpenWebsocket() {
+ 
+		  // ws = new WebSocket("ws://192.168.1.100/test");
+		 
+		   ws.onopen = function() {
+				document.getElementById("inputText").disabled = false;
+				document.getElementById("sendButton").disabled = false;
+				document.getElementById("connectButton").disabled = true;
+				document.getElementById("disconnectButton").disabled = false;
+		   };
+		 
+		   ws.onclose = function() {
+				document.getElementById("inputText").disabled = true;
+				document.getElementById("sendButton").disabled = true;
+				document.getElementById("connectButton").disabled = false;
+				document.getElementById("disconnectButton").disabled = true;
+		 
+				//alert("Connection closed");
+		   };
+		}
+ 
+         function CloseWebsocket(){
+            ws.close();
+         }
+		 
+		
+ 
+         function SendData(){
+            var textToSend = document.getElementById("inputText").value;
+            ws.send(textToSend);
+         }
+		 
+		  
+
+		 
+		 function f1(){
+		     var ch = document.getElementById("chk1");
+			 if (ch.checked){ws.send("11");}else {ws.send("10");}
+			 navigator.vibrate(1000);
+		 }
+		 function f2(){
+		     var ch = document.getElementById("chk2");
+			 if (ch.checked){ws.send("21");}else {ws.send("20");}
+			 navigator.vibrate(1000);			 
+		 }
+		 		 function f3(){
+		     var ch = document.getElementById("chk3");
+			 if (ch.checked){ws.send("31");}else {ws.send("30");}	    
+			  navigator.vibrate(1000);
+		 }
+		 
+		 function acao(){
+			alert("Curioso","Atenção");
+		 }
+		 
+		 function alertDismissed() {
+				alert("voltou","Atenção");
+			}
+ 
+		function acao1() {	
+		
+			navigator.notification.alert(
+			'You are the winner!',
+			alertDismissed,     
+				'Game Over',          
+				'Done'                 
+			);
+		}	
+ 
+      </script>
+	  
+		
+    </head>
+	
+
+    <body onload="ws = new WebSocket('ws://192.168.1.105/test');">
+
+		<div class="header purple-900">
+			<button class="left icon ion-navicon" name="button"></button>
+			<h1>Infogestor Mobile</h1>
+		</div>
+		
+		</br></br></br></br></br></br>
+		 <div class="list">
+				  <div class="item">
+					<h2>Luz do Muro</h2>
+					<div class="right">
+					  <input type="checkbox" class="switch green" id="chk1" onchange="f1();" >
+					</div>
+				  </div>
+				 
+				  <div class="item">
+					<h2>Luz da Torre</h2>
+					<div class="right">
+					  <input type="checkbox" class="switch green" id="chk2" onchange="f2();">
+					</div>
+				  </div>
+				
+				  <div class="item">
+					<h2>Luz da Suite</h2>
+					<div class="right">
+					  <input type="checkbox" class="switch green" id="chk3" onchange="f3();">
+					</div>
+				  </div>
+				</div>
+		
+		
+		</br></br>
+		<button onclick="acao();" class="purple small">Clique aqui 1</button>
+		
+		<button onclick="acao1();" class="purple small">Clique aqui 2</button>
+		<div id="result"></div>
+	  
+		<div class="footer purple-900">
+			<div class="right">
+				<button class="icon ion-gear-b"></button>
+			</div>
+			<div class="right">
+				<button class="icon ion-gear-b"></button>
+			</div>
+			<div class="title">
+				Aparelho Conectado
+			</div>
+		</div>
+	  
+	  
+	
+		<script type="text/javascript" src="js/cordova.js"></script>
+        <script type="text/javascript" src="mobileui/mobileui.js"></script>
+		<script type="text/javascript" src="js/index.js"></script>
+    </body>
+</html>
