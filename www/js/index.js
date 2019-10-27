@@ -12,7 +12,7 @@ var app = {
  app.initialize();
 
 function onBatteryStatus(status) {
-			navigator.vibrate(5000);
+			
 			var number=document.getElementById("result");
 			number.innerHTML = "Level: " + status.level + " isPlugged: " + status.isPlugged;
 }
