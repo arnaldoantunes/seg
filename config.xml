@@ -19,6 +19,8 @@
     <allow-intent href="sms:*" />
     <allow-intent href="mailto:*" />
     <allow-intent href="geo:*" />
+	<engine name="android" spec="https://github.com/apache/cordova-android.git#6.0.0" />
+	<preference name="LoadingDialog" value="Carregando..."/>
     <platform name="android">
         <allow-intent href="market:*" />
     </platform>
