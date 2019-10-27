@@ -5,7 +5,6 @@ var app = {
  
     onDeviceReady: function() {  
 		window.addEventListener("batterystatus", onBatteryStatus, false);
-		navigator.vibrate(3000);
 	},
 };
 

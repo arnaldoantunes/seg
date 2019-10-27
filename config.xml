@@ -12,6 +12,7 @@
 	<plugin name="cordova-plugin-dialogs" spec="1.3.4" />
 	<plugin name="cordova-plugin-vibration" spec="1.2.0" />
 	<plugin name="cordova-plugin-whitelist" spec="1.3.4" />
+	<plugin name="Notification" value="org.apache.cordova.Notification"/>
     <access origin="*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
@@ -19,7 +20,7 @@
     <allow-intent href="sms:*" />
     <allow-intent href="mailto:*" />
     <allow-intent href="geo:*" />
-	<engine name="android" spec="https://github.com/apache/cordova-android.git#6.0.0" />
+	<engine name="android" spec="6.3.0" />
 	<preference name="LoadingDialog" value="Carregando..."/>
     <platform name="android">
         <allow-intent href="market:*" />

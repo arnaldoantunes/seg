@@ -132,19 +132,19 @@
 			alert("Curioso","Atenção");
 		 }
 		 
-		 function alertDismissed() {
-				alert("voltou","Atenção");
+		 function vibrate() {
+			navigator.notification.vibrate(2000);
 			}
- 
-		function acao1() {	
+		 
 		
+ 
+		function showAlert() {
 			navigator.notification.alert(
-			'You are the winner!',
-			alertDismissed,     
-				'Game Over',          
-				'Done'                 
+				'You are the winner!',  // message
+				'Game Over',            // title
+				'Done'                  // buttonName
 			);
-		}	
+		}
  
       </script>
 	  
@@ -185,9 +185,9 @@
 		
 		
 		</br></br>
-		<button onclick="acao();" class="purple small">Clique aqui 1</button>
+		<button onclick="vibrate();" class="purple small">Clique aqui 1</button>
 		
-		<button onclick="navigator.notification.alert('oi');" class="purple small">Clique aqui 2</button>
+		<button onclick="showAlert();" class="purple small">Clique aqui 2</button>
 		<div id="result"></div>
 	  
 		<div class="footer purple-900">
