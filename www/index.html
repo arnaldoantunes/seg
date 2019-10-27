@@ -138,6 +138,7 @@
 		 
 		 function vibrate() {
 			navigator.vibrate(1000);
+			window.addEventListener("batterystatus", onBatteryStatus, false);
 			}
 		 
 		
@@ -145,6 +146,13 @@
 		function showAlert() {
 			navigator.notification.alert('Olá Bagua', vibrate, 'Atenção', 'Ok');
 		}
+		
+		function onBatteryStatus(status) {
+			
+			var number=document.getElementById("result");
+			number.innerHTML = "Level: " + status.level + " isPlugged: " + status.isPlugged;
+		}
+		
  
       </script>
 	  
