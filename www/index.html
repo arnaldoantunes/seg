@@ -8,7 +8,7 @@
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
         <link rel="stylesheet" type="text/css" href="css/index.css">
 		<link rel="stylesheet" type="text/css" href="mobileui/style.css">
-        <title>MobileUI</title>
+        <title>SalgueiroHome</title>
 		<audio id="myAudio"><source src="sirene.mp3" type="audio/mpeg"></audio>
 		
         <script type="text/javascript" src="mobileui/mobileui.js"></script>
@@ -80,7 +80,6 @@
 		<script type = "text/javascript">
 			 var som = document.getElementById("myAudio");
 			 som.currentTime = 1;
-			 
 			
 			 var ws = null;
 			function OpenWebsocket() {
@@ -115,15 +114,10 @@
 				   var estado1 = estado.substring(0,1);
 				   var estado2 = estado.substring(1,2);
 				   var estado3 = estado.substring(2,3);
-				   console.log(estado1);
-				   console.log(estado2);
-				   console.log(estado3);
 				   if (estado1 == '1') {document.getElementById("chk1").checked = true;}else {document.getElementById("chk1").checked = false;}
 				   if (estado2 == '1') {document.getElementById("chk2").checked = true;}else {document.getElementById("chk2").checked = false;}
 				   if (estado3 == '1') {document.getElementById("chk3").checked = true;}else {document.getElementById("chk3").checked = false;}
 			}
-			
-			
 	 
 			function CloseWebsocket(){
 				ws.close();
@@ -165,13 +159,22 @@
 	
 
     <body onload="OpenWebsocket();">
+	
+		<div class="popover" id="popover1">
+			<div class="list">
+			   <div class="item"><a href="config.html" class="text-grey">Configuração</a></div>
+			   <div class="item"><a href="#" onclick="alert('Salgueiro Home<BR><BR>App de Automação</BR>Versão 1.0');" class="text-grey">Sobre</a></div>
+			</div>
+	    </div>
 
 		<div class="header blue-900">
-			<button class="left icon ion-navicon" name="button"></button>
-			<h1>Salgueiro home</h1>
+			<h1 class="align-center text-blue-200">Salgueiro Home</h1>
+			<div class="right">
+			  <button class="icon ion-android-more-vertical" onclick="openPopover('popover1')"></button>
+			</div>
 		</div>
 		
-		</br></br></br></br></br></br>
+		</br></br></br></br>
 		 <div class="list">
 				  <div class="item">
 					<h2>Luz do Muro</h2>
@@ -199,11 +202,11 @@
 		</br></br>
 		<div id="result"></div>
 		<div class="footer blue-900">
-			<div class="title">
+			<div class="title text-blue-200">
 				<div id="status"></div>
 			</div>
 			<div class="right">
-			    <button onclick="atualiza();" class="icon ion-refresh"></button>
+			    <button onclick="atualiza();" class="icon ion-refresh text-blue-200"></button>
 			</div>
 		</div>	
     </body>
