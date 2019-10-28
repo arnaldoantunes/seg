@@ -97,22 +97,9 @@
 					document.getElementById("status").innerHTML = "Conectado";
 				};
 				ws.onmessage = function(evt){
+				   
 				   var received_msg = evt.data;
-				   var canal1  = received_msg.substring(0,1);
-				   var estado1 = received_msg.substring(1,2);
-				   var canal2  = received_msg.substring(2,3);
-				   var estado2 = received_msg.substring(3,4);
-				   var canal3 = received_msg.substring(4,5);
-				   var estado3 = received_msg.substring(5,6);
-				   
-				   if (estado1 == '1') {document.getElementById("chk1").checked = true;}
-				   if (estado2 == '1') {document.getElementById("chk2").checked = true;}
-				   if (estado3 == '1') {document.getElementById("chk3").checked = true;}
-				   
-				  
-				   
-				   //console.log(received_msg.substring(0,2));
-				   //console.log(received_msg.substring(2,4));
+				   acertaEstados(received_msg);
 				   //console.log(received_msg.substring(4,6));
 				  
 				}
@@ -122,6 +109,18 @@
 					document.getElementById("chk3").disabled = true;
 					document.getElementById("status").innerHTML = "Desconectado";
 				};
+			}
+			
+			function acertaEstados(estado){
+				   var canal1  = estado.substring(0,1);
+				   var estado1 = estado.substring(1,2);
+				   var canal2  = estado.substring(2,3);
+				   var estado2 = estado.substring(3,4);
+				   var canal3  = estado.substring(4,5);
+				   var estado3 = estado.substring(5,6);
+				   if (estado1 == '1') {document.getElementById("chk1").checked = true;}else {document.getElementById("chk1").checked = false;}
+				   if (estado2 == '1') {document.getElementById("chk2").checked = true;}else {document.getElementById("chk2").checked = false;}
+				   if (estado3 == '1') {document.getElementById("chk3").checked = true;}else {document.getElementById("chk3").checked = false;}
 			}
 			
 			
