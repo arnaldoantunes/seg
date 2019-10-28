@@ -112,12 +112,12 @@
 			}
 			
 			function acertaEstados(estado){
-				   var canal1  = estado.substring(0,1);
-				   var estado1 = estado.substring(1,2);
-				   var canal2  = estado.substring(2,3);
-				   var estado2 = estado.substring(3,4);
-				   var canal3  = estado.substring(4,5);
-				   var estado3 = estado.substring(5,6);
+				   var estado1 = estado.substring(0,1);
+				   var estado2 = estado.substring(1,2);
+				   var estado3 = estado.substring(2,3);
+				   console.log(estado1);
+				   console.log(estado2);
+				   console.log(estado3);
 				   if (estado1 == '1') {document.getElementById("chk1").checked = true;}else {document.getElementById("chk1").checked = false;}
 				   if (estado2 == '1') {document.getElementById("chk2").checked = true;}else {document.getElementById("chk2").checked = false;}
 				   if (estado3 == '1') {document.getElementById("chk3").checked = true;}else {document.getElementById("chk3").checked = false;}
