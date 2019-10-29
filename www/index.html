@@ -88,7 +88,6 @@
 				document.getElementById("chk3").disabled = true;
 				document.getElementById("status").innerHTML = "Desconectado";
 				ws = new WebSocket('ws://192.168.1.199/test');
-				//ws = new WebSocket('ws://192.168.4.1/test');
 				ws.onopen = function() {
 					ws.send("A0");
 					document.getElementById("chk1").disabled = false;
