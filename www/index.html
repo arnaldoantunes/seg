@@ -93,9 +93,6 @@
 				};
 				ws.onmessage = function(evt){
 				   var received_msg = evt.data;
-				   //if (received_msg == '*') {
-						//playAudio();
-				   //}else{acertaEstados(received_msg);}
 				   acertaEstados(received_msg);
 				};
 				ws.onclose = function() {
@@ -139,10 +136,7 @@
 				 if (ch.checked){ws.send("31");}else {ws.send("30");}	    
 				  //navigator.vibrate(100);
 			 }
-			 
-			 function acao(){
-				//ws.send("D0");			  
-			 }
+					
 		
 			function atualiza(){
 			   OpenWebsocket();
@@ -150,14 +144,10 @@
 			
 			var x = document.getElementById("myAudio");
 			function playAudio() {
-			  x.play();
+			 // x.play();
 			}
 			
-			//setInterval( function() {
-			//    ws.send("D0");
-		//		console.log( 'Executa infinitamente, 1 vez por segundo.' );
-		//	}, 1000 );
-	 
+				 
 		  </script>
 	  
 		
@@ -206,7 +196,7 @@
 				  </div>
 				</div>
 		
-		<button onclick="playAudio();" >clique aqui</button>
+		
 		</br></br>
 		<div id="result"></div>
 		<div class="footer blue-900">
