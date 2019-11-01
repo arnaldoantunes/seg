@@ -13,10 +13,15 @@
 		<script type = "text/javascript">
 			var ws = null;
 			function inicial(){
+			    var ip = localStorage.getItem("IP");
+				document.getElementById("alarme1").disabled = true;
+				document.getElementById("tempo").disabled = true;
 				document.getElementById("status").innerHTML = "Desconectado";
-				ws = new WebSocket('ws://192.168.1.199/test');
+				ws = new WebSocket('ws://'+ip+'/test');
 				ws.onopen = function() {
 					ws.send("A0");
+					document.getElementById("alarme1").disabled = false;
+					document.getElementById("tempo").disabled = false;
 					document.getElementById("status").innerHTML = "Conectado";
 				};
 				ws.onmessage = function(evt){
@@ -26,7 +31,7 @@
 				   if (estadoalarme == '1') {document.getElementById("alarme1").checked = true;}else {document.getElementById("alarme1").checked = false;}
 				   document.getElementById("tempo").value = timealarme;
 				};
-			
+			    document.getElementById("text1").value = localStorage.getItem("IP");
 			}
 		
 		
@@ -43,6 +48,14 @@
 				ws.send("C"+x);
 			}
 			
+			function atualiza(){
+			   inicial();
+			}
+			
+			function guardaIP(){
+				localStorage.setItem("IP", document.getElementById("text1").value);
+			}
+			
 	
 		</script>
 	  
@@ -57,27 +70,27 @@
 		</div>
 		
 		</br></br></br></br>
-		 <div class="list">
-		 			<div class="item">
-						<h2>Alarme</h2>
-						<div class="right">
-						  <input type="checkbox" class="switch green" id="alarme1" onchange="funcaoalarme();" >
-						</div>
-						
-				  </div>
-				  
-				 
-				  	<div class="item">
-							<select id="tempo" onchange="funcaoselect();">
-							  <option value="0">10 segundos</option>
-							  <option value="1">30 segundos</option>
-							  <option value="2">60 segundos</option>
-							  <option value="3">120 segundos</option>
-							</select>
-						  </div>
-			
-				   
-				  
+		<div class="list">
+			<div class="item">
+				<h2>Alarme</h2>
+				<div class="right">
+				    <input type="checkbox" class="switch green" id="alarme1" onchange="funcaoalarme();" >
+				</div>
+			</div>
+			<div class="item">
+				<select id="tempo" onchange="funcaoselect();">
+					<option value="0">10 segundos</option>
+					<option value="1">30 segundos</option>
+					<option value="2">60 segundos</option>
+					<option value="3">120 segundos</option>
+				</select>
+			</div>
+			<div class="item">
+				<h2>IP do Servidor</h2>
+				<div class="right">
+				    <input type="text" id="text1" onchange="guardaIP();">
+				</div>
+			</div>			
 		</div>
 		
 		
@@ -91,6 +104,5 @@
 			    <button onclick="atualiza();" class="icon ion-refresh"></button>
 			</div>
 		</div>	
-		
     </body>
 </html>
