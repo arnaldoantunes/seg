@@ -83,6 +83,9 @@
 				document.getElementById("chk1").disabled = true;
 				document.getElementById("chk2").disabled = true;
 				document.getElementById("chk3").disabled = true;
+				document.getElementById("chk4").disabled = true;
+				document.getElementById("chk5").disabled = true;
+				document.getElementById("chk6").disabled = true;
 				document.getElementById("status").innerHTML = "Desconectado";
 				ws = new WebSocket('ws://'+ip+'/test');
 				ws.onopen = function() {
@@ -90,6 +93,9 @@
 					document.getElementById("chk1").disabled = false;
 					document.getElementById("chk2").disabled = false;
 					document.getElementById("chk3").disabled = false;
+					document.getElementById("chk4").disabled = false;
+					document.getElementById("chk5").disabled = false;
+					document.getElementById("chk6").disabled = false;
 					document.getElementById("status").innerHTML = "Conectado";
 				};
 				ws.onmessage = function(evt){
@@ -125,19 +131,29 @@
 			function f1(){
 				 var ch = document.getElementById("chk1");
 				 if (ch.checked){ws.send("11");}else {ws.send("10");}
-				 //navigator.vibrate(100);
 			}
 			function f2(){
 				 var ch = document.getElementById("chk2");
 				 if (ch.checked){ws.send("21");}else {ws.send("20");}
-				 //navigator.vibrate(100);			 
 			}
 			function f3(){
 				 var ch = document.getElementById("chk3");
 				 if (ch.checked){ws.send("31");}else {ws.send("30");}	    
-				  //navigator.vibrate(100);
-			 }
-					
+			}
+			function f4(){
+				 var ch = document.getElementById("chk4");
+				 if (ch.checked){ws.send("41");}else {ws.send("40");}	    
+			}
+			function f5(){
+				 var ch = document.getElementById("chk5");
+				 if (ch.checked){ws.send("51");}else {ws.send("50");}	    
+			}
+			
+			function f6(){
+				 var ch = document.getElementById("chk6");
+				 if (ch.checked){ws.send("61");}else {ws.send("60");}	    
+			}			
+			
 		
 			function atualiza(){
 			   OpenWebsocket();
@@ -176,25 +192,45 @@
 		</br></br></br></br>
 		 <div class="list">
 				  <div class="item">
-					<h2>Luz do Muro</h2>
+					<h2>Muro</h2>
 					<div class="right">
 					  <input type="checkbox" class="switch green" id="chk1" onchange="f1();" >
 					</div>
 				  </div>
 				 
 				  <div class="item">
-					<h2>Luz da Torre</h2>
+					<h2>Torre</h2>
 					<div class="right">
 					  <input type="checkbox" class="switch green" id="chk2" onchange="f2();">
 					</div>
 				  </div>
 				
 				  <div class="item">
-					<h2>Luz da Suite</h2>
+					<h2>Suite</h2>
 					<div class="right">
 					  <input type="checkbox" class="switch green" id="chk3" onchange="f3();">
 					</div>
 				  </div>
+				  <div class="item">
+					<h2>Churrasqueira</h2>
+					<div class="right">
+					  <input type="checkbox" class="switch green" id="chk4" onchange="f4();">
+					</div>
+				  </div>
+
+				  <div class="item">
+					<h2>Quarto João</h2>
+					<div class="right">
+					  <input type="checkbox" class="switch green" id="chk5" onchange="f5();">
+					</div>
+				  </div>				  
+				  
+			      <div class="item">
+					<h2>Quarto Julio</h2>
+					<div class="right">
+					  <input type="checkbox" class="switch green" id="chk6" onchange="f6();">
+					</div>
+				  </div>				  				  
 				</div>
 		
 		
