@@ -7,7 +7,7 @@
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
         <link rel="stylesheet" type="text/css" href="css/index.css">
 		<link rel="stylesheet" type="text/css" href="mobileui/style.css">
-        <title>SalgueiroHome</title>
+        <title>HomeESP</title>
 		
 		
 		<script type = "text/javascript">
@@ -57,7 +57,7 @@
 			}
 			
 	
-		</script>
+		</script>	
 	  
 		
     </head>
@@ -70,28 +70,53 @@
 		</div>
 		
 		</br></br></br></br>
-		<div class="list">
-			<div class="item">
-				<h2>Alarme</h2>
-				<div class="right">
-				    <input type="checkbox" class="switch green" id="alarme1" onchange="funcaoalarme();" >
-				</div>
-			</div>
-			<div class="item">
-				<select id="tempo" onchange="funcaoselect();">
-					<option value="0">10 segundos</option>
-					<option value="1">30 segundos</option>
-					<option value="2">60 segundos</option>
-					<option value="3">120 segundos</option>
-				</select>
-			</div>
-			<div class="item">
-				<h2>Endereço IP</h2>
-				<div class="right">
-				    <input type="text" id="text1" onchange="guardaIP();">
-				</div>
-			</div>			
+		 		
+		<div class="header blue-900 sub shadow tab">
+			<button class="icon ion-ios-home active" onclick="openCity(event, 'tabAlarme')">Alarme</button>
+			<button class="icon ion-wifi" onclick="openCity(event, 'tabRede')">Rede</button>
+			<button class="icon ion-ios-cloud" onclick="openCity(event, 'tabCliente')">ID do Cliente</button>
 		</div>
+
+		<div class="tab-content active" id="tabAlarme">
+			<h2 class="text-strong padding text-pink">Alarme</h2>
+			</BR>
+			<div class="list">
+				<div class="item">
+					<h2>Alarme</h2>
+					<div class="right">
+						<input type="checkbox" class="switch green" id="alarme1" onchange="funcaoalarme();" >
+					</div>
+				</div>
+				<div class="item">
+					<select id="tempo" onchange="funcaoselect();">
+						<option value="0">10 segundos</option>
+						<option value="1">30 segundos</option>
+						<option value="2">1 minuto</option>
+						<option value="3">2 minutos</option>
+					</select>
+				</div>
+			</div>
+		  </div>
+		  <div class="tab-content" id="tabRede">
+				<h2 class="text-strong padding text-pink">Rede</h2>
+				</BR>
+				<div class="list">
+					<div class="item">
+						<h2>Endereço IP</h2>
+						<div class="right">
+							<input type="text" id="text1" onchange="guardaIP();">
+						</div>
+					</div>
+				</div>
+		  </div>
+		  <div class="tab-content" id="tabCliente">
+			<h2 class="text-strong padding text-pink">ID do Cliente</h2>
+		  </div>
+		 
+		
+		
+		
+
 		
 		
 		</br></br>
@@ -104,5 +129,23 @@
 			    <button onclick="atualiza();" class="icon ion-refresh text-blue-200"></button>
 			</div>
 		</div>	
+		
+		
+		<script>
+			function openCity(evt, cityName) {
+				var i, tabcontent, tablinks;
+				tabcontent = document.getElementsByClassName("tab-content");
+				for (i = 0; i < tabcontent.length; i++) {
+					tabcontent[i].style.display = "none";
+				}
+				tablinks = document.getElementsByClassName("icon");
+				for (i = 0; i < tablinks.length; i++) {
+					tablinks[i].className = tablinks[i].className.replace(" active", "");
+				}
+				document.getElementById(cityName).style.display = "block";
+				evt.currentTarget.className += " active";
+			}
+		</script>
+
     </body>
 </html>
