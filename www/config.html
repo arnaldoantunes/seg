@@ -74,7 +74,7 @@
 		<div class="header blue-900 sub shadow tab">
 			<button class="icon ion-ios-home active" onclick="openCity(event, 'tabAlarme')">Alarme</button>
 			<button class="icon ion-wifi" onclick="openCity(event, 'tabRede')">Rede</button>
-			<button class="icon ion-ios-cloud" onclick="openCity(event, 'tabCliente')">ID do Cliente</button>
+			<button class="icon ion-ios-cloud" onclick="openCity(event, 'tabCliente')">Monitoramento</button>
 		</div>
 
 		<div class="tab-content active" id="tabAlarme">
@@ -96,29 +96,23 @@
 					</select>
 				</div>
 			</div>
-		  </div>
-		  <div class="tab-content" id="tabRede">
-				<h2 class="text-strong padding text-pink">Rede</h2>
-				</BR>
-				<div class="list">
-					<div class="item">
-						<h2>Endereço IP</h2>
-						<div class="right">
-							<input type="text" id="text1" onchange="guardaIP();">
-						</div>
+		</div>
+		<div class="tab-content" id="tabRede">
+			<h2 class="text-strong padding text-pink">Rede</h2>
+			</BR>
+			<div class="list">
+				<div class="item">
+					<h2>Endereço IP</h2>
+					<div class="right">
+						<input type="text" id="text1" onchange="guardaIP();">
 					</div>
 				</div>
-		  </div>
-		  <div class="tab-content" id="tabCliente">
+			</div>
+		</div>
+		<div class="tab-content" id="tabCliente">
 			<h2 class="text-strong padding text-pink">ID do Cliente</h2>
-		  </div>
-		 
-		
-		
-		
+		</div>
 
-		
-		
 		</br></br>
 		<div id="result"></div>
 		<div class="footer blue-900 text-blue-200">
