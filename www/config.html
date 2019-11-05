@@ -39,14 +39,8 @@
 				window.location.href = "index.html";
 			}
 			
-			function funcaoalarme(){
-				var ch = document.getElementById("alarme1");
-				if (ch.checked){ws.send("B1");}else {ws.send("B0");}
-			}
-			function funcaoselect(){
-				var x = document.getElementById("tempo").value;
-				ws.send("C"+x);
-			}
+
+
 			
 			function atualiza(){
 			   inicial();
@@ -68,38 +62,14 @@
 		    <button class="left icon ion-android-arrow-back" onclick="volta();" name="button"></button>
 			<h1 class="align-center text-blue-200">Configuração</h1>
 		</div>
-		
-		</br></br></br></br>
 		 		
 		<div class="header blue-900 sub shadow tab">
-			<button class="icon ion-ios-home active" onclick="openCity(event, 'tabAlarme')">Alarme</button>
-			<button class="icon ion-wifi" onclick="openCity(event, 'tabRede')">Rede</button>
+			<button class="icon ion-wifi active" onclick="openCity(event, 'tabRede')">Rede</button>
 			<button class="icon ion-ios-cloud" onclick="openCity(event, 'tabCliente')">Monitoramento</button>
 		</div>
 
-		<div class="tab-content active" id="tabAlarme">
-			<h2 class="text-strong padding text-pink">Alarme</h2>
-			</BR>
-			<div class="list">
-				<div class="item">
-					<h2>Alarme</h2>
-					<div class="right">
-						<input type="checkbox" class="switch green" id="alarme1" onchange="funcaoalarme();" >
-					</div>
-				</div>
-				<div class="item">
-					<select id="tempo" onchange="funcaoselect();">
-						<option value="0">10 segundos</option>
-						<option value="1">30 segundos</option>
-						<option value="2">1 minuto</option>
-						<option value="3">2 minutos</option>
-					</select>
-				</div>
-			</div>
-		</div>
-		<div class="tab-content" id="tabRede">
-			<h2 class="text-strong padding text-pink">Rede</h2>
-			</BR>
+		<div class="tab-content active" id="tabRede">
+			</br></br></br></br></br></br></br>
 			<div class="list">
 				<div class="item">
 					<h2>Endereço IP</h2>
@@ -110,7 +80,7 @@
 			</div>
 		</div>
 		<div class="tab-content" id="tabCliente">
-			<h2 class="text-strong padding text-pink">ID do Cliente</h2>
+			</br></br></br></br></br></br></br>Cliente
 		</div>
 
 		</br></br>

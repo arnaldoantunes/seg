@@ -173,6 +173,16 @@
 			 // x.play();
 			}
 			
+			function funcaoalarme(){
+				var ch = document.getElementById("alarme1");
+				if (ch.checked){ws.send("B1");}else {ws.send("B0");}
+			}
+			
+			function funcaoselect(){
+				var x = document.getElementById("tempo").value;
+				ws.send("C"+x);
+			}
+			
 				 
 		  </script>
 	  
@@ -198,7 +208,15 @@
 			</div>
 		</div>
 		
-		</br></br></br></br>
+		
+		
+		<div class="header blue-900 sub shadow tab">
+			<button class="icon ion-android-bulb active" onclick="openCity(event, 'tabControle')">Controles</button>
+			<button class="icon ion-ios-home" onclick="openCity(event, 'tabAlarme')">Alarme</button>
+		</div>
+		
+		<div class="tab-content active" id="tabControle">
+		</br></br></br></br></br></br></br>
 		 <div class="list">
 				  <div class="item">
 					<h2>Muro</h2>
@@ -240,11 +258,36 @@
 					  <input type="checkbox" class="switch green" id="chk6" onchange="f6();">
 					</div>
 				  </div>				  				  
+				</div>		
+		
+		</div>
+		<div class="tab-content" id="tabAlarme">
+			</br></br></br></br></br></br></br>
+			
+			<div class="list">
+				<div class="item">
+					<h2>Alarme</h2>
+					<div class="right">
+						<input type="checkbox" class="switch green" id="alarme1" onchange="funcaoalarme();" >
+					</div>
 				</div>
+				<div class="item">
+					<select id="tempo" onchange="funcaoselect();">
+						<option value="0">10 segundos</option>
+						<option value="1">30 segundos</option>
+						<option value="2">1 minuto</option>
+						<option value="3">2 minutos</option>
+					</select>
+				</div>
+			</div>		
+		</div>
+
+		
+
 		
 		
-		</br></br>
-		<div id="result"></div>
+		
+		
 		<div class="footer blue-900">
 			<div class="title text-blue-200">
 				<div id="status"></div>
@@ -253,5 +296,21 @@
 			    <button onclick="atualiza();" class="icon ion-refresh text-blue-200"></button>
 			</div>
 		</div>	
+		
+		<script>
+			function openCity(evt, cityName) {
+				var i, tabcontent, tablinks;
+				tabcontent = document.getElementsByClassName("tab-content");
+				for (i = 0; i < tabcontent.length; i++) {
+					tabcontent[i].style.display = "none";
+				}
+				tablinks = document.getElementsByClassName("icon");
+				for (i = 0; i < tablinks.length; i++) {
+					tablinks[i].className = tablinks[i].className.replace(" active", "");
+				}
+				document.getElementById(cityName).style.display = "block";
+				evt.currentTarget.className += " active";
+			}
+		</script>		
     </body>
 </html>
