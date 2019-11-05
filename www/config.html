@@ -22,10 +22,7 @@
 				};
 				ws.onmessage = function(evt){
 				   var received_msg = evt.data;
-				   var estadoalarme = received_msg.substring(6,7);
-				   var timealarme = received_msg.substring(7,8);
-				   if (estadoalarme == '1') {document.getElementById("alarme1").checked = true;}else {document.getElementById("alarme1").checked = false;}
-				   document.getElementById("tempo").value = timealarme;
+				   
 				};
 			    document.getElementById("text1").value = localStorage.getItem("IP");
 			}
