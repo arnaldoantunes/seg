@@ -86,6 +86,8 @@
 				document.getElementById("chk4").disabled = true;
 				document.getElementById("chk5").disabled = true;
 				document.getElementById("chk6").disabled = true;
+				document.getElementById("alarme1").disabled = true;
+				document.getElementById("tempo").disabled = true;
 				document.getElementById("status").innerHTML = "Desconectado";
 				ws = new WebSocket('ws://'+ip+'/test');
 				ws.onopen = function() {
@@ -96,6 +98,8 @@
 					document.getElementById("chk4").disabled = false;
 					document.getElementById("chk5").disabled = false;
 					document.getElementById("chk6").disabled = false;
+					document.getElementById("alarme1").disabled = false;
+					document.getElementById("tempo").disabled = false;
 					document.getElementById("status").innerHTML = "Conectado";
 				};
 				ws.onmessage = function(evt){
@@ -109,6 +113,8 @@
 					document.getElementById("chk4").disabled = true;
 					document.getElementById("chk5").disabled = true;
 					document.getElementById("chk6").disabled = true;
+					document.getElementById("alarme1").disabled = true;
+					document.getElementById("tempo").disabled = true;
 					document.getElementById("status").innerHTML = "Desconectado";
 				};
 			}
@@ -188,11 +194,8 @@
 	  
 		
     </head>
-	
 
     <body onload="OpenWebsocket();">
-	
-	
 	
 		<div class="popover" id="popover1">
 			<div class="list">
@@ -202,68 +205,61 @@
 	    </div>
 
 		<div class="header blue-900">
-			<h1 class="align-center text-blue-200">HomeESP</h1>
+			<h1 class="align-center" style="color:#9eb5d9">HomeESP</h1>
 			<div class="right">
 			  <button class="icon ion-android-more-vertical" onclick="openPopover('popover1')"></button>
 			</div>
 		</div>
 		
-		
-		
 		<div class="header blue-900 sub shadow tab">
 			<button class="icon ion-android-bulb active" onclick="openCity(event, 'tabControle')">Controles</button>
-			<button class="icon ion-ios-home" onclick="openCity(event, 'tabAlarme')">Alarme</button>
+			<button class="icon ion-radio-waves" onclick="openCity(event, 'tabAlarme')">Alarme</button>
 		</div>
 		
 		<div class="tab-content active" id="tabControle">
-		</br></br></br></br></br></br></br>
-		 <div class="list">
-				  <div class="item">
+			</br></br></br></br></br></br></br></br>
+			<div class="list">
+				<div class="item">
 					<h2>Muro</h2>
 					<div class="right">
-					  <input type="checkbox" class="switch green" id="chk1" onchange="f1();" >
+						<input type="checkbox" class="switch green" id="chk1" onchange="f1();" >
 					</div>
-				  </div>
-				 
-				  <div class="item">
+				</div>
+				<div class="item">
 					<h2>Torre</h2>
 					<div class="right">
 					  <input type="checkbox" class="switch green" id="chk2" onchange="f2();">
 					</div>
-				  </div>
-				
-				  <div class="item">
-					<h2>Suite</h2>
-					<div class="right">
-					  <input type="checkbox" class="switch green" id="chk3" onchange="f3();">
-					</div>
-				  </div>
-				  <div class="item">
+				</div>
+				<div class="item">
 					<h2>Churrasqueira</h2>
 					<div class="right">
 					  <input type="checkbox" class="switch green" id="chk4" onchange="f4();">
 					</div>
-				  </div>
-
-				  <div class="item">
+				</div>				
+				<div class="item">
+					<h2>Suite</h2>
+					<div class="right">
+					  <input type="checkbox" class="switch green" id="chk3" onchange="f3();">
+					</div>
+				</div>
+				<div class="item">
 					<h2>Quarto João</h2>
 					<div class="right">
 					  <input type="checkbox" class="switch green" id="chk5" onchange="f5();">
 					</div>
-				  </div>				  
-				  
-			      <div class="item">
+				</div>				  
+			    <div class="item">
 					<h2>Quarto Julio</h2>
 					<div class="right">
 					  <input type="checkbox" class="switch green" id="chk6" onchange="f6();">
 					</div>
-				  </div>				  				  
-				</div>		
-		
+				</div>				  				  
+			</div>		
 		</div>
+		
 		<div class="tab-content" id="tabAlarme">
-			</br></br></br></br></br></br></br>
-			
+			</br></br></br></br></br></br></br></br>
 			<div class="list">
 				<div class="item">
 					<h2>Alarme</h2>
@@ -282,18 +278,12 @@
 			</div>		
 		</div>
 
-		
-
-		
-		
-		
-		
 		<div class="footer blue-900">
-			<div class="title text-blue-200">
+			<div class="title" style="color:#9eb5d9">
 				<div id="status"></div>
 			</div>
 			<div class="right">
-			    <button onclick="atualiza();" class="icon ion-refresh text-blue-200"></button>
+			    <button onclick="atualiza();" class="icon ion-refresh" style="color:#9eb5d9"></button>
 			</div>
 		</div>	
 		

@@ -14,14 +14,10 @@
 			var ws = null;
 			function inicial(){
 			    var ip = localStorage.getItem("IP");
-				document.getElementById("alarme1").disabled = true;
-				document.getElementById("tempo").disabled = true;
 				document.getElementById("status").innerHTML = "Desconectado";
 				ws = new WebSocket('ws://'+ip+'/test');
 				ws.onopen = function() {
 					ws.send("A0");
-					document.getElementById("alarme1").disabled = false;
-					document.getElementById("tempo").disabled = false;
 					document.getElementById("status").innerHTML = "Conectado";
 				};
 				ws.onmessage = function(evt){
@@ -33,34 +29,21 @@
 				};
 			    document.getElementById("text1").value = localStorage.getItem("IP");
 			}
-		
-		
-			function volta(){
-				window.location.href = "index.html";
+			function volta(){window.location.href = "index.html";}
+			function atualiza(){inicial();}
+			function guardaIP(){localStorage.setItem("IP", document.getElementById("text1").value);}
+			function guardaIDCLIENTE(){
+				var ch = document.getElementById("IDCliente");
+				ws.send("E"+ch.value);
 			}
 			
-
-
-			
-			function atualiza(){
-			   inicial();
-			}
-			
-			function guardaIP(){
-				localStorage.setItem("IP", document.getElementById("text1").value);
-			}
-			
-	
 		</script>	
-	  
-		
     </head>
-	
 
     <body onload="inicial();">
 		<div class="header blue-900">
 		    <button class="left icon ion-android-arrow-back" onclick="volta();" name="button"></button>
-			<h1 class="align-center text-blue-200">Configuração</h1>
+			<h1 class="align-center" style="color:#9eb5d9">Configuração</h1>
 		</div>
 		 		
 		<div class="header blue-900 sub shadow tab">
@@ -69,7 +52,7 @@
 		</div>
 
 		<div class="tab-content active" id="tabRede">
-			</br></br></br></br></br></br></br>
+			</br></br></br></br></br></br></br></br>
 			<div class="list">
 				<div class="item">
 					<h2>Endereço IP</h2>
@@ -80,21 +63,26 @@
 			</div>
 		</div>
 		<div class="tab-content" id="tabCliente">
-			</br></br></br></br></br></br></br>Cliente
+			</br></br></br></br></br></br></br></br>
+			<div class="list">
+				<div class="item">
+					<h2>ID do cliente</h2>
+					<div class="right">
+						<input type="text" id="IDCliente" onchange="guardaIDCLIENTE();">
+					</div>
+				</div>
+			</div>			
 		</div>
-
-		</br></br>
-		<div id="result"></div>
-		<div class="footer blue-900 text-blue-200">
-			<div class="title">
+		
+		<div class="footer blue-900">
+			<div class="title" style="color:#9eb5d9">
 				<div id="status"></div>
 			</div>
 			<div class="right">
-			    <button onclick="atualiza();" class="icon ion-refresh text-blue-200"></button>
+			    <button onclick="atualiza();" class="icon ion-refresh" style="color:#9eb5d9"></button>
 			</div>
-		</div>	
-		
-		
+		</div>
+	
 		<script>
 			function openCity(evt, cityName) {
 				var i, tabcontent, tablinks;
