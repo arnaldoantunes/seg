@@ -34,6 +34,21 @@
 				ws.send("E"+ch.value);
 			}
 			
+			function getIp(callback){
+				function response(s){callback(window.userip);s.onload = s.onerror = null;document.body.removeChild(s);}
+				function trigger(){
+						window.userip = false;
+						var s = document.createElement("script");
+						s.async = true;
+						s.onload = function() {response(s);};s.onerror = function() {response(s);};
+						s.src = "https://l2.io/ip.js?var=userip";
+						document.body.appendChild(s);
+				}
+				if (/^(interactive|complete)$/i.test(document.readyState)) {trigger();} else {document.addEventListener('DOMContentLoaded', trigger);}
+			}
+
+			getIp(function (ip){document.getElementById("IPexterno").value = ip;});
+			
 		</script>	
     </head>
 
@@ -52,12 +67,20 @@
 			</br></br></br></br></br></br></br></br>
 			<div class="list">
 				<div class="item">
-					<h2>Endereço IP</h2>
+					<h2>Endereço IP local</h2>
 					<div class="right">
 						<input type="text" id="text1" onchange="guardaIP();">
 					</div>
 				</div>
 			</div>
+			<div class="list">
+				<div class="item">
+					<h2>Endereço IP externo</h2>
+					<div class="right">
+						<input type="text" id="IPexterno" onload="getIP();">
+					</div>
+				</div>
+			</div>			
 		</div>
 		<div class="tab-content" id="tabCliente">
 			</br></br></br></br></br></br></br></br>

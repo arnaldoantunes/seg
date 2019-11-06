@@ -87,6 +87,7 @@
 				document.getElementById("chk5").disabled = true;
 				document.getElementById("chk6").disabled = true;
 				document.getElementById("alarme1").disabled = true;
+				document.getElementById("alarmeDisparo").disabled = true;
 				document.getElementById("tempo").disabled = true;
 				document.getElementById("status").innerHTML = "Desconectado";
 				ws = new WebSocket('ws://'+ip+'/test');
@@ -99,6 +100,7 @@
 					document.getElementById("chk5").disabled = false;
 					document.getElementById("chk6").disabled = false;
 					document.getElementById("alarme1").disabled = false;
+					document.getElementById("alarmeDisparo").disabled = false;
 					document.getElementById("tempo").disabled = false;
 					document.getElementById("status").innerHTML = "Conectado";
 				};
@@ -118,6 +120,7 @@
 					document.getElementById("chk5").disabled = true;
 					document.getElementById("chk6").disabled = true;
 					document.getElementById("alarme1").disabled = true;
+					document.getElementById("alarmeDisparo").disabled = true;
 					document.getElementById("tempo").disabled = true;
 					document.getElementById("status").innerHTML = "Desconectado";
 				};
