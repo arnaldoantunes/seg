@@ -80,6 +80,9 @@
 			var ws = null;
 			function OpenWebsocket() {
 			    var ip = localStorage.getItem("IP");
+				var usarExterno = localStorage.getItem("EXTERNO");
+				var ipexterno = localStorage.getItem("IPEXTERNO");
+				if (usarExterno == '1') {if (ipexterno != ''){ip = ipexterno;}}
 				document.getElementById("chk1").disabled = true;
 				document.getElementById("chk2").disabled = true;
 				document.getElementById("chk3").disabled = true;
@@ -187,7 +190,7 @@
 			}
 			function funcaoalarmeDisparo(){
 				var ch = document.getElementById("alarmeDisparo");
-				if (ch.checked){ws.send("D1");}else {ws.send("D0");}
+				if (ch.checked){document.getElementById("alarme1").disabled = true; ws.send("D1");}else {document.getElementById("alarme1").disabled = false; ws.send("D0");}
 			}			
 				 
 		  </script>

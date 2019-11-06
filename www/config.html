@@ -14,6 +14,9 @@
 			var ws = null;
 			function inicial(){
 			    var ip = localStorage.getItem("IP");
+				var usarExterno = localStorage.getItem("EXTERNO");
+				if (usarExterno == '1') {document.getElementById("usarExterno").checked = true;}else {document.getElementById("usarExterno").checked = false;}
+				document.getElementById("IPexterno").value = localStorage.getItem("IPEXTERNO");
 				document.getElementById("status").innerHTML = "Desconectado";
 				ws = new WebSocket('ws://'+ip+'/test');
 				ws.onopen = function() {
@@ -22,7 +25,6 @@
 				};
 				ws.onmessage = function(evt){
 				   var received_msg = evt.data;
-				   
 				};
 			    document.getElementById("text1").value = localStorage.getItem("IP");
 			}
@@ -34,6 +36,7 @@
 				ws.send("E"+ch.value);
 			}
 			
+			function chamaIP() {
 			function getIp(callback){
 				function response(s){callback(window.userip);s.onload = s.onerror = null;document.body.removeChild(s);}
 				function trigger(){
@@ -47,8 +50,10 @@
 				if (/^(interactive|complete)$/i.test(document.readyState)) {trigger();} else {document.addEventListener('DOMContentLoaded', trigger);}
 			}
 
-			getIp(function (ip){document.getElementById("IPexterno").value = ip;});
+			getIp(function (ip){document.getElementById("IPexterno").value = ip; localStorage.setItem("IPEXTERNO", ip);});
+			}
 			
+			function usarIP(){if (usarExterno.checked){localStorage.setItem("EXTERNO", "1");}else {localStorage.setItem("EXTERNO", "0");}}
 		</script>	
     </head>
 
@@ -67,7 +72,7 @@
 			</br></br></br></br></br></br></br></br>
 			<div class="list">
 				<div class="item">
-					<h2>Endereço IP local</h2>
+					<h2>IP local</h2>
 					<div class="right">
 						<input type="text" id="text1" onchange="guardaIP();">
 					</div>
@@ -75,12 +80,20 @@
 			</div>
 			<div class="list">
 				<div class="item">
-					<h2>Endereço IP externo</h2>
+					<button onclick="chamaIP();" class="border-grey radius icon-text"><i class="icon icon ion-refresh"></i>IP Externo</button>
 					<div class="right">
-						<input type="text" id="IPexterno" onload="getIP();">
+						<input type="text" id="IPexterno">
 					</div>
 				</div>
-			</div>			
+			</div>
+			<div class="list">
+				<div class="item">
+					<h2>Usar IP externo</h2>
+					<div class="right">
+						<input type="checkbox" class="switch green" id="usarExterno" onchange="usarIP();" >
+					</div>
+				</div>	
+			</div>	
 		</div>
 		<div class="tab-content" id="tabCliente">
 			</br></br></br></br></br></br></br></br>
