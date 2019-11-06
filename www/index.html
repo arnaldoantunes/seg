@@ -122,7 +122,6 @@
 					document.getElementById("status").innerHTML = "Desconectado";
 				};
 			}
-			
 			function acertaEstados(estado){
 				   var estado1 = estado.substring(0,1);
 				   var estado2 = estado.substring(1,2);
@@ -137,16 +136,13 @@
 				   if (estado5 == '1') {document.getElementById("chk5").checked = true;}else {document.getElementById("chk5").checked = false;}
 				   if (estado6 == '1') {document.getElementById("chk6").checked = true;}else {document.getElementById("chk6").checked = false;}
 			}
-	 
 			function CloseWebsocket(){
 				ws.close();
 			}
-
 			function SendData(){
 				//var textToSend = document.getElementById("inputText").value;
 				//ws.send(textToSend);
 			}
-			 
 			function f1(){
 				 var ch = document.getElementById("chk1");
 				 if (ch.checked){ws.send("11");}else {ws.send("10");}
@@ -167,32 +163,29 @@
 				 var ch = document.getElementById("chk5");
 				 if (ch.checked){ws.send("51");}else {ws.send("50");}	    
 			}
-			
 			function f6(){
 				 var ch = document.getElementById("chk6");
 				 if (ch.checked){ws.send("61");}else {ws.send("60");}	    
 			}			
-			
-		
 			function atualiza(){
 			   OpenWebsocket();
 			}
-			
 			var x = document.getElementById("myAudio");
 			function playAudio() {
-			 // x.play();
+			  //x.play();
 			}
-			
 			function funcaoalarme(){
 				var ch = document.getElementById("alarme1");
 				if (ch.checked){ws.send("B1");}else {ws.send("B0");}
 			}
-			
 			function funcaoselect(){
 				var x = document.getElementById("tempo").value;
 				ws.send("C"+x);
 			}
-			
+			function funcaoalarmeDisparo(){
+				var ch = document.getElementById("alarmeDisparo");
+				if (ch.checked){ws.send("D1");}else {ws.send("D0");}
+			}			
 				 
 		  </script>
 	  
@@ -266,19 +259,25 @@
 			</br></br></br></br></br></br></br></br>
 			<div class="list">
 				<div class="item">
-					<h2>Alarme</h2>
+					<h2>Ativar alarme</h2>
 					<div class="right">
 						<input type="checkbox" class="switch green" id="alarme1" onchange="funcaoalarme();" >
 					</div>
 				</div>
 				<div class="item">
 					<select id="tempo" onchange="funcaoselect();">
-						<option value="0">10 segundos</option>
-						<option value="1">30 segundos</option>
-						<option value="2">1 minuto</option>
-						<option value="3">2 minutos</option>
+						<option value="0">Desativar após 10 segundos</option>
+						<option value="1">Desativar após 30 segundos</option>
+						<option value="2">Desativar após 1 minuto</option>
+						<option value="3">Desativar após 2 minutos</option>
 					</select>
 				</div>
+				<div class="item">
+					<h2>Disparar manualmente</h2>
+					<div class="right">
+						<input type="checkbox" class="switch green" id="alarmeDisparo" onchange="funcaoalarmeDisparo();" >
+					</div>
+				</div>				
 			</div>		
 		</div>
 
