@@ -14,8 +14,9 @@
 			var ws = null;
 			function inicial(){
 			    var ip = localStorage.getItem("IP");
+				var ipexterno = localStorage.getItem("IPEXTERNO");
 				var usarExterno = localStorage.getItem("EXTERNO");
-				if (usarExterno == '1') {document.getElementById("usarExterno").checked = true;}else {document.getElementById("usarExterno").checked = false;}
+				if (usarExterno == '1') {document.getElementById("usarExterno").checked = true; if (ipexterno != ''){ip = ipexterno;}}else {document.getElementById("usarExterno").checked = false;}
 				document.getElementById("IPexterno").value = localStorage.getItem("IPEXTERNO");
 				document.getElementById("status").innerHTML = "Desconectado";
 				ws = new WebSocket('ws://'+ip+'/test');
