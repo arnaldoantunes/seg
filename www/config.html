@@ -26,6 +26,8 @@
 				};
 				ws.onmessage = function(evt){
 				   var received_msg = evt.data;
+				   var clienteID = received_msg.substring(8,17);
+				   document.getElementById("IDCliente").value = clienteID;
 				};
 			    document.getElementById("text1").value = localStorage.getItem("IP");
 			}
