@@ -3,40 +3,105 @@
 <head>
 </head>
 	<body>
-
 		<div class="page">
-		  <div class="header blue">
-			<div class="left">
-			  <button class="icon ion-ios-arrow-back" onclick="backPage()"></button>
-			</div>
-			<h1 class="title align-center">Contacts</h1>
-		  </div>
-		  <div class="content has-header">
-		<div class="list">
-			<div class="item label-fixed">
-				<label>Nome</label>
-				<input type="text" id="nome">
-			</div>
-			<div class="item label-fixed">
-				<label>CPF</label>
-				<input type="text" id="cpf">
-			</div>
-			<div class="item label-fixed">
-				<label>Celular</label>
-				<input type="text" id="celular">
-			</div>
-			<div class="item label-fixed">
-				<label>Cep</label>
-				<input type="text" id="cep">
-			</div>			
-			<div class="item">
-				<button class="blue radius full">Gravar</button>
-			</div>
-		</div>
-		  </div>
+			<div class="header blue-900">
+				<button class="left icon ion-android-arrow-back" onclick="backPage()" name="button"></button>
+				<h1 class="align-center" style="color:#9eb5d9">Meus dados</h1>
+			</div>		
+		    <div class="content has-header">
+				<div class="list">
+					<div class="item">
+						<h1>Fique tranquilo(a)! Seus dados serão armazenados em local seguro.</h1>
+					</div>
+				</div>			
+				<div class="list">
+					<div class="item label-fixed">
+						<label>Nome</label>
+						<input type="text" id="nome">
+					</div>
+					<div class="item label-fixed">
+						<label>CPF</label>
+						<input type="text" id="cpf">
+					</div>
+					<div class="item label-fixed">
+						<label>Celular</label>
+						<input type="text" id="celular">
+					</div>
+					<div class="item label-fixed">
+						<label>Cep</label>
+						<input type="text" id="cep">
+					</div>
+					
+					<div class="list">
+						<div class="item">
+							<h1>Adicione créditos ao HomeESP para obter segurança. Você receberá um SMS caso algum ponto do monitoramento seja ativado. Os créditos adicionados valem por um ano.</h1>
+						</div>
+					</div>						
+					<div class="item">
+						<select id="credito">
+							<option value="0">R$ 50,00 - 20 Avisos</option>
+							<option value="1">R$ 100,00 - 40 Avisos</option>
+							<option value="2">R$ 200,00 - 80 Avisos</option>
+							<option value="3">R$ 500,00 - 200 Avisos</option>
+							<option value="4">R$ 1.000,00 - 400 Avisos</option>
+							<option value="5">R$ 10.000,00 - 4000 Avisos</option>
+						</select>
+					</div>
+					<div class="list">
+						<div class="item">
+							<h1>Para finalizar. Insira os dados do cartão de crédito. Não se preocupe você está em ambiente seguro!</h1>
+						</div>
+					</div>		
+					<div class="item label-fixed">
+						<label>Número do cartão</label>
+						<input type="text" id="numerocartao">
+					</div>
+
+					<div class="item label-fixed">
+						<label>Validade</label>
+						<select id="mes">
+							<option value="1">01</option>
+							<option value="2">02</option>
+							<option value="3">03</option>
+							<option value="4">04</option>
+							<option value="5">05</option>
+							<option value="6">06</option>
+							<option value="7">07</option>
+							<option value="8">08</option>
+							<option value="9">09</option>
+							<option value="10">10</option>
+							<option value="11">11</option>
+							<option value="12">12</option>
+						</select>/
+						<select id="ano">
+						    <option value="1">2019</option>
+							<option value="1">2020</option>
+							<option value="2">2021</option>
+							<option value="3">2022</option>
+							<option value="4">2023</option>
+							<option value="5">2024</option>
+							<option value="6">2025</option>
+							<option value="7">2026</option>
+							<option value="8">2027</option>
+							<option value="9">2028</option>
+							<option value="10">2029</option>
+							<option value="11">2030</option>
+							<option value="12">2032</option>
+						</select>
+					</div>
+					<div class="item">
+						<h1>CVC é o código de verificação que se encontra na parte de trás do cartão.</h1>
+					</div>					
+					<div class="item label-fixed">
+						<label>CVC</label>
+						<input type="text" id="numerocartao">
+					</div>					
+					
+					<div class="item">
+						<button class="teal-50 radius full">Gravar</button>
+					</div>
+				</div>
+		    </div>
 		</div>	
-	
-	
-		
 	</body>
 </html>

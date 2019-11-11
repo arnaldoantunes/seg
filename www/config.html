@@ -12,6 +12,7 @@
 		<script type="text/javascript" src="js/soapclient.js"></script>
         <title>HomeESP</title>
 		<script type = "text/javascript">
+			window.disabledOpenPageEffect=true
 			var ws = null;
 			function inicial(){
 			    var ip = localStorage.getItem("IP");
@@ -93,15 +94,13 @@
 
     <body onload="inicial();">
 		<div class="header blue-900">
-		    <button class="left icon ion-android-arrow-back" onclick="volta();" name="button"></button>
+			<button class="left icon ion-android-arrow-back" onclick="volta()" name="button"></button>
 			<h1 class="align-center" style="color:#9eb5d9">Configuração</h1>
-		</div>
-		 		
+		</div>		
 		<div class="header blue-900 sub shadow tab">
-			<button class="icon ion-wifi active" onclick="openCity(event, 'tabRede')">Rede</button>
-			<button class="icon ion-ios-cloud" onclick="openCity(event, 'tabCliente')">Monitoramento</button>
+			<button class="icon ion-wifi active" onclick="openCity1(event, 'tabRede')">Rede</button>
+			<button class="icon ion-ios-cloud" onclick="openCity1(event, 'tabCliente')">Monitoramento</button>
 		</div>
-
 		<div class="tab-content active" id="tabRede">
 			</br></br></br></br></br></br></br></br>
 			<div class="list">
@@ -143,17 +142,13 @@
 				<div class="item">
 					<h1>Para obter a ID do cliente acesse Meus Dados e faça o cadastro.</h1>
 				</div>
-			</div>				
+			</div>	
 			<div class="list">
-
-				<button class="blue full radius margin-top margin-bottom" onclick="openPage('dados');")">Meus Dados</button>
-				<!--<button class="teal full radius margin-top margin-bottom" onclick="recarrega(); include('myFrame','dados');">Meus Dados</button>
-				<div id="myFrame"></div>  style="color:#9eb5d9"-->
+				<div class="item">
+					<button class="grey-200 full radius margin-top margin-bottom" onclick="openPage('dados');")>Meus Dados</button>
+				</div>
 			</div>
 
-			
-			
-			
 		</div>
 		
 		<div class="footer blue-900">
@@ -161,12 +156,11 @@
 				<div id="status"></div>
 			</div>
 			<div class="right">
-			    <button onclick="atualiza();" class="icon ion-refresh" style="color:#9eb5d9"></button>
+				<button onclick="atualiza();" class="icon ion-refresh" style="color:#9eb5d9"></button>
 			</div>
 		</div>
-	
 		<script>
-			function openCity(evt, cityName) {
+			function openCity1(evt, cityName) {
 				var i, tabcontent, tablinks;
 				tabcontent = document.getElementsByClassName("tab-content");
 				for (i = 0; i < tabcontent.length; i++) {
