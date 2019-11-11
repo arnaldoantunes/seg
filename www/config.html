@@ -1,15 +1,16 @@
 <!DOCTYPE html>
 <html>
     <head>
+	
 		<meta name="format-detection" content="telephone=no">
         <meta charset="utf-8">
         <meta name="msapplication-tap-highlight" content="no">
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
         <link rel="stylesheet" type="text/css" href="css/index.css">
 		<link rel="stylesheet" type="text/css" href="mobileui/style.css">
+		<script type="text/javascript" src="mobileui/mobileui.js"></script>
+		<script type="text/javascript" src="js/soapclient.js"></script>
         <title>HomeESP</title>
-		
-		
 		<script type = "text/javascript">
 			var ws = null;
 			function inicial(){
@@ -40,23 +41,43 @@
 			}
 			
 			function chamaIP() {
-			function getIp(callback){
-				function response(s){callback(window.userip);s.onload = s.onerror = null;document.body.removeChild(s);}
-				function trigger(){
-						window.userip = false;
-						var s = document.createElement("script");
-						s.async = true;
-						s.onload = function() {response(s);};s.onerror = function() {response(s);};
-						s.src = "https://l2.io/ip.js?var=userip";
-						document.body.appendChild(s);
+				function getIp(callback){
+					function response(s){callback(window.userip);s.onload = s.onerror = null;document.body.removeChild(s);}
+					function trigger(){
+							window.userip = false;
+							var s = document.createElement("script");
+							s.async = true;
+							s.onload = function() {response(s);};s.onerror = function() {response(s);};
+							s.src = "https://l2.io/ip.js?var=userip";
+							document.body.appendChild(s);
+					}
+					if (/^(interactive|complete)$/i.test(document.readyState)) {trigger();} else {document.addEventListener('DOMContentLoaded', trigger);}
 				}
-				if (/^(interactive|complete)$/i.test(document.readyState)) {trigger();} else {document.addEventListener('DOMContentLoaded', trigger);}
+				getIp(function (ip){document.getElementById("IPexterno").value = ip; localStorage.setItem("IPEXTERNO", ip);});
 			}
-
-			getIp(function (ip){document.getElementById("IPexterno").value = ip; localStorage.setItem("IPEXTERNO", ip);});
+			function usarIP(){if (usarExterno.checked){localStorage.setItem("EXTERNO", "1");}else {localStorage.setItem("EXTERNO", "0");}}
+			function recarrega(){
+				//window.location.reload();
+    			recuperaID();
 			}
 			
-			function usarIP(){if (usarExterno.checked){localStorage.setItem("EXTERNO", "1");}else {localStorage.setItem("EXTERNO", "0");}}
+			
+			var url = "https://infogestor.com.br/novo/testservice.asmx";
+            function recuperaID(){
+					
+		        //if (veServer()){ 
+		            var pl = new SOAPClientParameters();
+					//pl.add("usuario", document.getElementById('<%= txt_USUARIO.ClientID %>').value);		            
+		            //pl.add("grupoemissor", document.getElementById('<%= txt_GRUPOEMISSOR.ClientID %>').value);
+		            //pl.add("emissor", document.getElementById('<%= txt_EMISSOR.ClientID %>').value);
+		            SOAPClient.invoke(url, "temID", pl, true, recuperaID_callBack);
+		        //}
+	        }
+	        function recuperaID_callBack(result){
+			    //var obj = JSON.parse(result);
+				alert(result);
+			}
+			
 		</script>	
     </head>
 
@@ -107,7 +128,21 @@
 						<input type="text" id="IDCliente" onchange="guardaIDCLIENTE();">
 					</div>
 				</div>
-			</div>			
+			</div>	
+			<div class="list">
+				<div class="item">
+					<h1>Para obter a ID do cliente acesse Meus Dados e faça o cadastro.</h1>
+				</div>
+			</div>				
+			<div class="list">
+			<button class="teal full radius margin-top margin-bottom" onclick="recuperaID();")">Meus Dados</button>
+				 <!--<button class="teal full radius margin-top margin-bottom" onclick="include('myFrame','dados')">Meus Dados</button>-->
+				 <div id="myFrame"></div>
+			</div>
+
+			
+			
+			
 		</div>
 		
 		<div class="footer blue-900">
