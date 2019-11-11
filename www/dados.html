@@ -11,7 +11,7 @@
 		    <div class="content has-header">
 				<div class="list">
 					<div class="item">
-						<h1>Fique tranquilo(a)! Seus dados serão armazenados em local seguro.</h1>
+						<h1>Fique tranquilo(a)! Seus dados estão em local seguro.</h1>
 					</div>
 				</div>			
 				<div class="list">
@@ -19,10 +19,16 @@
 						<label>Nome</label>
 						<input type="text" id="nome">
 					</div>
+					<div class="item">
+						<h1>Para o CPF informe somente números.</h1>
+					</div>					
 					<div class="item label-fixed">
 						<label>CPF</label>
 						<input type="text" id="cpf">
 					</div>
+					<div class="item">
+						<h1>Para o telefone celular informe somente números incluindo código de área ex: (99)99999-9999</h1>
+					</div>						
 					<div class="item label-fixed">
 						<label>Celular</label>
 						<input type="text" id="celular">
@@ -31,12 +37,11 @@
 						<label>Cep</label>
 						<input type="text" id="cep">
 					</div>
-					
-					<div class="list">
-						<div class="item">
-							<h1>Adicione créditos ao HomeESP para obter segurança. Você receberá um SMS caso algum ponto do monitoramento seja ativado. Os créditos adicionados valem por um ano.</h1>
-						</div>
-					</div>						
+
+					<div class="item">
+						<h1>Adicione créditos ao HomeESP. Você receberá um SMS caso algum ponto do monitoramento seja ativado. Os créditos adicionados valem por um ano.</h1>
+					</div>
+							
 					<div class="item">
 						<select id="credito">
 							<option value="0">R$ 50,00 - 20 Avisos</option>
@@ -47,16 +52,17 @@
 							<option value="5">R$ 10.000,00 - 4000 Avisos</option>
 						</select>
 					</div>
-					<div class="list">
-						<div class="item">
-							<h1>Para finalizar. Insira os dados do cartão de crédito. Não se preocupe você está em ambiente seguro!</h1>
-						</div>
-					</div>		
+
+					<div class="item">
+						<h1>Insira os dados do cartão de crédito. Não se preocupe você está em ambiente seguro!  Aceitamos as seguintes bandeiras:</h1>
+						<img src="bandeiras.png" height="50" width="300">
+					</div>
+					
+		
 					<div class="item label-fixed">
 						<label>Número do cartão</label>
 						<input type="text" id="numerocartao">
 					</div>
-
 					<div class="item label-fixed">
 						<label>Validade</label>
 						<select id="mes">
@@ -94,11 +100,16 @@
 					</div>					
 					<div class="item label-fixed">
 						<label>CVC</label>
-						<input type="text" id="numerocartao">
+						<input type="text" id="cvc">
 					</div>					
-					
+					<div class="item label-fixed">
+						<h2>Renovar automaticamente</h2>
+						<div class="right">
+							<input type="checkbox" class="switch green" id="renovar">
+						</div>
+					</div>					
 					<div class="item">
-						<button class="teal-50 radius full">Gravar</button>
+						<button class="teal-50 radius full" onclick="gravaDados();">Gravar</button>
 					</div>
 				</div>
 		    </div>

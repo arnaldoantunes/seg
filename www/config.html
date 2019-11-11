@@ -12,7 +12,6 @@
 		<script type="text/javascript" src="js/soapclient.js"></script>
         <title>HomeESP</title>
 		<script type = "text/javascript">
-			window.disabledOpenPageEffect=true
 			var ws = null;
 			function inicial(){
 			    var ip = localStorage.getItem("IP");
@@ -59,33 +58,40 @@
 			function usarIP(){if (usarExterno.checked){localStorage.setItem("EXTERNO", "1");}else {localStorage.setItem("EXTERNO", "0");}}
 			function recarrega(){
 				//window.location.reload();
-    			recuperaID();
+    			//recuperaID();
 			}
-			
 			
 			var url = "http://localhost:51844/Novo/TestService.asmx";
-            function recuperaID(){
-		        carregaEstado();
+            function gravaDados(){
+		
+		        var pl = new SOAPClientParameters();
+				pl.add("nome", document.getElementById('nome').value);
+				pl.add("cpf", document.getElementById('cpf').value);
+				pl.add("celular", document.getElementById('celular').value);
+				pl.add("cep", document.getElementById('cep').value);
 				
-	        }
-	        function recuperaID_callBack(result){
-			   
-			}
-			
-			function carregaEstado(){
-				var pl = new SOAPClientParameters();
-		        SOAPClient.invoke(url, "pegaEstado", pl, true, carregaEstado_callBack);
-			}
-			function carregaEstado_callBack(result){
-			    var obj = JSON.parse(result); var select = document.getElementById("estado"); var n;
-				for (n = 0; n < obj.length; n++){select.options[select.options.length] = new Option(obj[n].p_DS_ESTADO, obj[n].p_CD_ESTADO, false, false);}
-			}
-			
-			function selecionaCidade(){
-				var select = document.getElementById("estado");
+				var select = document.getElementById("credito");
 				var option = select.options[select.selectedIndex];
-				alert("Text: " + option.text + "\nValue: " + option.value);
+				
+				pl.add("credito", option.value);
+				pl.add("cartao", document.getElementById('numerocartao').value);
+				var select = document.getElementById("mes");
+				var option = select.options[select.selectedIndex];
+				pl.add("mes", option.value);
+				var select = document.getElementById("ano");
+				var option = select.options[select.selectedIndex];
+				pl.add("ano", option.value);
+				pl.add("cvc", document.getElementById("cvc").value);
+				pl.add("renova", document.getElementById("renovar").checked);
+				
+		        SOAPClient.invoke(url, "gravaDados", pl, true, gravaDados_callBack);
+					
+	        }
+	        function gravaDados_callBack(result){
+			   alert(result);
 			}
+			
+			
 			
 			
 			
