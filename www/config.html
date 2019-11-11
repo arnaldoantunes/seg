@@ -62,20 +62,31 @@
 			}
 			
 			
-			var url = "https://infogestor.com.br/novo/testservice.asmx";
+			var url = "http://localhost:51844/Novo/TestService.asmx";
             function recuperaID(){
-		        //if (veServer()){ 
-		            var pl = new SOAPClientParameters();
-					//pl.add("usuario", document.getElementById('<%= txt_USUARIO.ClientID %>').value);		            
-		            //pl.add("grupoemissor", document.getElementById('<%= txt_GRUPOEMISSOR.ClientID %>').value);
-		            //pl.add("emissor", document.getElementById('<%= txt_EMISSOR.ClientID %>').value);
-		            SOAPClient.invoke(url, "temID", pl, true, recuperaID_callBack);
-		        //}
+		        carregaEstado();
+				
 	        }
 	        function recuperaID_callBack(result){
-			    //var obj = JSON.parse(result);
-				alert(result);
+			   
 			}
+			
+			function carregaEstado(){
+				var pl = new SOAPClientParameters();
+		        SOAPClient.invoke(url, "pegaEstado", pl, true, carregaEstado_callBack);
+			}
+			function carregaEstado_callBack(result){
+			    var obj = JSON.parse(result); var select = document.getElementById("estado"); var n;
+				for (n = 0; n < obj.length; n++){select.options[select.options.length] = new Option(obj[n].p_DS_ESTADO, obj[n].p_CD_ESTADO, false, false);}
+			}
+			
+			function selecionaCidade(){
+				var select = document.getElementById("estado");
+				var option = select.options[select.selectedIndex];
+				alert("Text: " + option.text + "\nValue: " + option.value);
+			}
+			
+			
 			
 		</script>	
     </head>
@@ -134,9 +145,10 @@
 				</div>
 			</div>				
 			<div class="list">
-			<button class="teal full radius margin-top margin-bottom" onclick="recuperaID();")">Meus Dados</button>
-				 <!--<button class="teal full radius margin-top margin-bottom" onclick="include('myFrame','dados')">Meus Dados</button>-->
-				 <div id="myFrame"></div>
+
+				<button class="blue full radius margin-top margin-bottom" onclick="openPage('dados');")">Meus Dados</button>
+				<!--<button class="teal full radius margin-top margin-bottom" onclick="recarrega(); include('myFrame','dados');">Meus Dados</button>
+				<div id="myFrame"></div>  style="color:#9eb5d9"-->
 			</div>
 
 			
