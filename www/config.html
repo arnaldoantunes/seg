@@ -61,18 +61,17 @@
     			//recuperaID();
 			}
 			
-			var url = "http://localhost:51844/Novo/TestService.asmx";
+			var url = "https://infogestor.com.br/homeesp/testservice.asmx";
             function gravaDados(){
-		
-		        var pl = new SOAPClientParameters();
+				document.getElementById("botaogd").disabled = true;
+				document.getElementById("botaogd").value = "Aguarde..."
+				var pl = new SOAPClientParameters();
 				pl.add("nome", document.getElementById('nome').value);
 				pl.add("cpf", document.getElementById('cpf').value);
 				pl.add("celular", document.getElementById('celular').value);
 				pl.add("cep", document.getElementById('cep').value);
-				
 				var select = document.getElementById("credito");
 				var option = select.options[select.selectedIndex];
-				
 				pl.add("credito", option.value);
 				pl.add("cartao", document.getElementById('numerocartao').value);
 				var select = document.getElementById("mes");
@@ -83,17 +82,15 @@
 				pl.add("ano", option.value);
 				pl.add("cvc", document.getElementById("cvc").value);
 				pl.add("renova", document.getElementById("renovar").checked);
-				
 		        SOAPClient.invoke(url, "gravaDados", pl, true, gravaDados_callBack);
-					
 	        }
 	        function gravaDados_callBack(result){
-			   alert(result);
+				if (result == "SUCESSO") {
+					alert("Dados gravados com sucesso.</BR></BR>Você receberá uma mensagem de texto confirmando seu cadastro.", "Atenção");
+				}else{alert(result, "Atenção");}
+				document.getElementById("botaogd").disabled = false;
+				document.getElementById("botaogd").value = "Gravar"
 			}
-			
-			
-			
-			
 			
 		</script>	
     </head>
