@@ -125,7 +125,14 @@
 			}
 			
 			function carregaCreditos_callBack(result){
-				document.getElementById('totalCredito').value = result;
+				document.getElementById('totalCredito').value = result +" avisos";
+				var pl = new SOAPClientParameters();
+				pl.add("id", document.getElementById('IDCliente').value);
+				SOAPClient.invoke(url, "final", pl, true, final_callBack);
+			}
+			
+			function final_callBack(result){
+				document.getElementById("botaocc").value = "Confirmar com cartão final "+result;
 			}
 			
 		</script>	
