@@ -62,6 +62,7 @@
 			}
 			
 			var url = "https://infogestor.com.br/homeesp/testservice.asmx";
+			//var url = "http://localhost:50143/appERP/testservice.asmx";
             function gravaDados(){
 				document.getElementById("botaogd").disabled = true;
 				document.getElementById("botaogd").value = "Aguarde..."
@@ -85,8 +86,8 @@
 		        SOAPClient.invoke(url, "gravaDados", pl, true, gravaDados_callBack);
 	        }
 	        function gravaDados_callBack(result){
-				if (result == "SUCESSO") {
-					alert("Dados gravados com sucesso.</BR></BR>Você receberá uma mensagem de texto confirmando seu cadastro.", "Atenção");
+				if (result.substring(0,7) == "SUCESSO") {
+					alert("Dados gravados com sucesso.</BR></BR>Seu ID é: <b>"+result.substring(7,16)+"</b></BR></BR>Você receberá uma mensagem de texto confirmando seu cadastro.", "Atenção");
 				}else{alert(result, "Atenção"); document.getElementById("botaogd").disabled = false;}
 				document.getElementById("botaogd").value = "Gravar"
 			}
@@ -132,25 +133,29 @@
 		</div>
 		<div class="tab-content" id="tabCliente">
 			</br></br></br></br></br></br></br></br>
-			<div class="list">
+			<div class="list">			
+				<div class="item">
+					<h1>Receba uma mensagem de texto caso algum ponto do monitoramento seja ativado.</h1>
+				</div>
+			</div>		
+			<div class="list">			
 				<div class="item">
 					<h2>ID do cliente</h2>
 					<div class="right">
 						<input type="text" id="IDCliente" onchange="guardaIDCLIENTE();">
 					</div>
 				</div>
-			</div>	
-			<div class="list">
+			</div>
+			<div class="list">			
 				<div class="item">
 					<h1>Para obter a ID do cliente acesse Meus Dados e faça o cadastro.</h1>
 				</div>
-			</div>	
-			<div class="list">
+			</div>			
+			<div class="list">			
 				<div class="item">
 					<button class="grey-200 full radius margin-top margin-bottom" onclick="openPage('dados');")>Meus Dados</button>
 				</div>
-			</div>
-
+			</div>					
 		</div>
 		
 		<div class="footer blue-900">
