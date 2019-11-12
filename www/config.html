@@ -29,6 +29,8 @@
 				   var received_msg = evt.data;
 				   var clienteID = received_msg.substring(8,17);
 				   document.getElementById("IDCliente").value = clienteID;
+				   if (clienteID != ""){document.getElementById("divcreditos").style.display = "block";
+					}else {document.getElementById("divcreditos").style.display = "none";}
 				};
 			    document.getElementById("text1").value = localStorage.getItem("IP");
 			}
@@ -61,8 +63,8 @@
     			//recuperaID();
 			}
 			
-			var url = "https://infogestor.com.br/homeesp/testservice.asmx";
-			//var url = "http://localhost:50143/appERP/testservice.asmx";
+			//var url = "https://infogestor.com.br/homeesp/testservice.asmx";
+			var url = "http://localhost:50143/appERP/testservice.asmx";
             function gravaDados(){
 				document.getElementById("botaogd").disabled = true;
 				document.getElementById("botaogd").value = "Aguarde..."
@@ -86,10 +88,44 @@
 		        SOAPClient.invoke(url, "gravaDados", pl, true, gravaDados_callBack);
 	        }
 	        function gravaDados_callBack(result){
-				if (result.substring(0,7) == "SUCESSO") {
-					alert("Dados gravados com sucesso.</BR></BR>Seu ID é: <b>"+result.substring(7,16)+"</b></BR></BR>Você receberá uma mensagem de texto confirmando seu cadastro.", "Atenção");
-				}else{alert(result, "Atenção"); document.getElementById("botaogd").disabled = false;}
+				if (result.substring(0,7) == "SUCESSO"){alert("Dados gravados com sucesso.</BR></BR>Seu ID é: <b>"+result.substring(7,16)+"</b></BR></BR>Você receberá uma mensagem de texto confirmando seu cadastro.", "Atenção");}		
+				if (result == "ALTERADO"){alert("Dados gravados com sucesso.")}
+				else{alert(result, "Atenção"); document.getElementById("botaogd").disabled = false;}
 				document.getElementById("botaogd").value = "Gravar"
+			}
+			
+			function carregaDados(){
+				if (document.getElementById("IDCliente").value != ""){
+					var pl = new SOAPClientParameters();
+					pl.add("id", document.getElementById('IDCliente').value);
+					SOAPClient.invoke(url, "consulta", pl, true, carregaDados_callBack);
+				}
+			}
+			
+			function carregaDados_callBack(result) {
+				var obj = JSON.parse(result);
+				document.getElementById("plano").style.display = "none"
+				document.getElementById("mensagemplano").style.display = "none"
+				document.getElementById("mensagemcartao").style.display = "none"				
+				document.getElementById("nome").value = obj.p_NM_CLIENTE;
+				document.getElementById("cpf").value = obj.p_NR_CPF;
+				document.getElementById("celular").value = obj.p_NR_CELULAR;
+				document.getElementById("cep").value = obj.p_NR_CEP;
+				document.getElementById("numerocartao").value = obj.p_NR_CARTAO;
+				document.getElementById('mes').value = obj.p_DS_MES;
+				document.getElementById('ano').value = obj.p_DS_ANO;
+				document.getElementById('cvc').value = obj.p_DS_CVC;
+				if (obj.p_FL_AUTO == "1") {document.getElementById("renovar").checked = true;} else  {document.getElementById("renovar").checked = false;}
+			}
+			
+			function carregaCreditos(){
+				var pl = new SOAPClientParameters();
+				pl.add("id", document.getElementById('IDCliente').value);
+				SOAPClient.invoke(url, "consultaCreditos", pl, true, carregaCreditos_callBack);
+			}
+			
+			function carregaCreditos_callBack(result){
+				document.getElementById('totalCredito').value = result;
 			}
 			
 		</script>	
@@ -153,11 +189,15 @@
 			</div>			
 			<div class="list">			
 				<div class="item">
-					<button class="grey-200 full radius margin-top margin-bottom" onclick="openPage('dados');")>Meus Dados</button>
+					<button class="grey-200 full radius margin-top margin-bottom" onclick="carregaDados(); openPage('dados');">Meus Dados</button>
 				</div>
-			</div>					
+			</div>	
+			<div class="list" id="divcreditos">			
+				<div class="item">
+					<button class="grey-200 full radius margin-top margin-bottom" onclick="carregaCreditos(); openPage('creditos');">Meus Créditos</button>
+				</div>
+			</div>			
 		</div>
-		
 		<div class="footer blue-900">
 			<div class="title" style="color:#9eb5d9">
 				<div id="status"></div>
