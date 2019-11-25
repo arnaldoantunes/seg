@@ -8,7 +8,7 @@
         Apache Cordova Team
     </author>
     <content src="index.html" />
-	<icon src="www/img/logo.png" platform="Android" width="57" height="57" density="mdpi" />
+	<icon src="img/logo.png" platform="Android" width="57" height="57" density="mdpi" />
     <preference name="DisallowOverscroll" value="true" />
     <plugin name="cordova-plugin-battery-status" spec="1.2.5" />
 	<plugin name="cordova-plugin-dialogs" spec="1.3.4" />
