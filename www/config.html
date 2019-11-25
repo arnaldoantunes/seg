@@ -20,6 +20,7 @@
 				if (usarExterno == '1') {document.getElementById("usarExterno").checked = true; if (ipexterno != ''){ip = ipexterno;}}else {document.getElementById("usarExterno").checked = false;}
 				document.getElementById("IPexterno").value = localStorage.getItem("IPEXTERNO");
 				document.getElementById("status").innerHTML = "Desconectado";
+				document.getElementById("divcreditos").style.display = "none";
 				ws = new WebSocket('ws://'+ip+'/test');
 				ws.onopen = function() {
 					ws.send("A0");
@@ -63,8 +64,8 @@
     			//recuperaID();
 			}
 			
-			var url = "https://infogestor.com.br/homeesp/testservice.asmx";
-			//var url = "http://localhost:50143/appERP/testservice.asmx";
+			//var url = "https://infogestor.com.br/homeesp/testservice.asmx";
+			var url = "http://localhost:50143/appERP/testservice.asmx";
             function gravaDados(){
 				document.getElementById("botaogd").disabled = true;
 				document.getElementById("botaogd").value = "Aguarde..."
